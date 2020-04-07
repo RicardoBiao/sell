@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        我是header    
+        我是seller      
     </div>
 </template>
 
