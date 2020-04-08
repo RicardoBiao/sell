@@ -1,49 +1,48 @@
 'use strict'
-const utils = require('./utils')
-const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
-const path = require('path')
-const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const portfinder = require('portfinder')
-const express = require('express')
+const utils = require('./utils');
+const webpack = require('webpack');
+const config = require('../config');
+const merge = require('webpack-merge');
+const path = require('path');
+const baseWebpackConfig = require('./webpack.base.conf');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const portfinder = require('portfinder');
+const express = require('express');
 
-const HOST = process.env.HOST
-const PORT = process.env.PORT && Number(process.env.PORT)
+const HOST = process.env.HOST;
+const PORT = process.env.PORT && Number(process.env.PORT);
 
-var app = express()
 
-var appData = require('../data.json')
-var seller = appData.seller
-var goods = appData.goods
-var ratings = appData.ratings
+var app = express();
+var appData = require('../data.json');
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+var apiRoutes = express.Router();
 
-var apiRoutes = express.Router()
-
-apiRoutes.get('/seller',function(req, res) {
+apiRoutes.get('/seller', function (req, res) {
   res.json({
-    errno:0,
-    data:seller
-  })
-})
+    errno: 0,
+    data: seller
+  });
+});
 
-apiRoutes.get('/goods',function(req, res) {
+apiRoutes.get('/goods', function (req, res) {
   res.json({
-    errno:0,
-    data:goods
-  })
-})
+    errno: 0,
+    data: goods
+  });
+});
 
 apiRoutes.get('/ratings',function(req, res) {
   res.json({
-    errno:0,
-    data:ratings
-  })
-})
-app.use('/api',apiRoutes)
+    errno: 0,
+    data: ratings
+  });
+});
+app.use('/api',apiRoutes);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -74,6 +73,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    before (app) {
+      app.get('/api/seller', function (req, res) {
+        res.json({
+          errno: 0,
+          data: seller
+        })
+      })
     }
   },
   plugins: [
