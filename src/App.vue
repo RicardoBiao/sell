@@ -3,7 +3,7 @@
     <v-header></v-header>
     <div class="tab">
       <div class="tab-item">
-        <router-link to="/goods">商品</router-link>>
+        <router-link to="/goods">商品</router-link>
       </div>
       <div class="tab-item">
         <router-link to="/ratings">评论</router-link>
