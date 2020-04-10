@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab">
       <div class="tab-item">
         <router-link to="/goods">商品</router-link>
@@ -27,14 +27,16 @@ export default {
       };
     },
     created() {
-      this.$axios.get('/api/seller').then((response) => {
-        console.log(response);
-        response = response.json();
-        
-        if (response.errno===0) {
-          this.seller = response.data;
+      this.$axios.get('/api/seller')
+      .then(res => {
+        console.log(res);
+        res = res.body;
+          this.seller = res.data.data;
           console.log(this.seller);
-        }
+        
+      })
+      .catch(function (error) {
+        console.log(error);
       });
     },
     components:{
