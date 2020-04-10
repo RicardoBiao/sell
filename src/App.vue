@@ -28,7 +28,9 @@ export default {
     },
     created() {
       this.$axios.get('/api/seller').then((response) => {
+        console.log(response);
         response = response.json();
+        
         if (response.errno===0) {
           this.seller = response.data;
           console.log(this.seller);
