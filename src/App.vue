@@ -28,11 +28,13 @@ export default {
     },
     created() {
       this.$axios.get('/api/seller')
-      .then(res => {
-        console.log(res);
-        res = res.body;
-          this.seller = res.data.data;
-          console.log(this.seller);
+      .then(response => {
+        console.log(response);
+        console.log(response.data);
+        
+        // response = response.body;
+          this.seller = response.data.data;
+          console.log(this.seller.avatar);
         
       })
       .catch(function (error) {
