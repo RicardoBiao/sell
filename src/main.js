@@ -7,6 +7,9 @@ import VueRouter from 'vue-router';
 import goods from '../src/components/goods/goods';
 import seller from '../src/components/seller/seller';
 import axios from "axios";
+
+
+
 Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false

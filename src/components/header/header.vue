@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="bulletin"></div>
+        <div class="bulletin-wrapper"></div>
 
     </div>
 </template>
@@ -36,7 +36,8 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-//   @import "../../common/stylus/mixin.styl";
+//   @import "./common/stylus/mixin.styl";
+
    .header
      color : #ffffff
      background-color : black 
@@ -45,6 +46,9 @@
        font-size : 0
        .avatar
          display : inline-block
+         vertical-align : top
+         img 
+            border-radius : 2px
        .content
          display : inline-block
          margin-left : 16px
@@ -52,9 +56,27 @@
          .title
            margin : 2px 0 8px 0
            .brand
-             display : inline-block
-             width : 30px
-             height : 18px
+              display : inline-block
+              vertical-align : top
+              width : 30px
+              height : 18px
+              background-image : url(brand + "@2x.png")
+              background-size : 30px 18px
+              background-repeat : no-repeat
+            .name
+              margin-left : 6px
+              font-size : 16px
+              line-height : 18px
+              font-weight : bold
+        .description
+          margin-bottom : 10px
+          line-height : 12px
+          font-size : 12px
+          font-weight : 200
+          color : rgb(255,255,255)
+        .icon
+          background-image : url(decrease_1 + "@2x.png")
+          background-repeat : no-repeat
              
 
 
