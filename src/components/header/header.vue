@@ -35,9 +35,9 @@
     
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
-//   @import "./common/stylus/mixin.styl";
 
+<style lang="stylus" rel="stylesheet/stylus">
+  @import "~common/stylus/mixin.styl";
    .header
      color : #ffffff
      background-color : black 
