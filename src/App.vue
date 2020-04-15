@@ -31,10 +31,13 @@ export default {
       .then(response => {
         console.log(response);
         console.log(response.data);
-        
+        console.log(response.data.errno);
+        let ERR_NO = response.data.errno;
+        if (ERR_NO===0)
         // response = response.body;
           this.seller = response.data.data;
           console.log(this.seller.avatar);
+          console.log(ERR_NO);
         
       })
       .catch(function (error) {
