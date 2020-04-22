@@ -18,16 +18,19 @@
                 </div>
                  
             </div>
-            <div v-if="seller.supports" class="support-count">
+            <div v-if="seller.supports" @click="showDetail()" class="support-count">
                 <span class="count">{{seller.supports.length}}个</span>
                 <i class="icon-keyboard_arrow_right"></i>
             </div>
            
         </div>
-        <div class="bulletin-wrapper">
+        <div @click="showDetail()" class="bulletin-wrapper">
             <span class="bulletin-title"></span>
             <span class="bulletin-text">{{seller.bulletin}}</span>
             <i class="icon-keyboard_arrow_right"></i>
+        </div>
+        <div v-show="detailShow" class="detail">
+            <button @click="showDetail()" >close</button>
         </div>
 
     </div>
@@ -39,8 +42,18 @@
             seller: {
                 type: Object
             }
-            
         } ,
+        data () {
+           return {
+               detailShow : false
+           } 
+        },
+        methods: {
+            showDetail () {
+                this.detailShow = !this.detailShow;
+            }
+
+        },
         created () {
             this.classMap = ['decrease','discount','special','invoice','guarantee']
         }
@@ -114,9 +127,10 @@
                         line-height : 12px
                         font-size : 12px
             .support-count
+                display : flex
                 position : absolute
                 right : 12px
-                bottom : 18px
+                bottom : 14px
                 padding 0 8px
                 height : 24px
                 border-radius : 14px
@@ -124,6 +138,7 @@
                 text-align : center
                 .count
                     font-size : 10px
+                    align-self : center
                 .icon-keyboard_arrow_right
                     font-size : 10px
 
@@ -132,25 +147,40 @@
             line-height : 28px
             padding : 0 22px 0 12px
             white-space : nowrap
-            overflow : hidden
             text-overflow : ellipsis
-            font-size : 0px
+            overflow : hidden
+            background-color : black 
             .bulletin-title
                 display : inline-block
                 vertical-align : top
                 width : 22px
                 height : 12px
-                margin-top : 7px
+                margin-top : 8px
                 bg-image('bulletin')
                 background-size : 22px 12px
                 background-repeat : no-repeat
             .bulletin-text
+                vertical-align : top
                 font-size : 10px
                 margin-left : 4px
             .icon-keyboard_arrow_right
                 font-size : 10px
                 right : 1
-    
+        .detail
+            position : fixed
+            z-index : 100
+            top : 0px
+            left : 0px
+            height : 100%
+            width : 100%
+            background-color : rgba(0,0,0,0.5)
+            text-align : center
+            button 
+                position : absolute
+                bottom : 20px
+                margin : 0 auto
+                background-color : red
+                
              
 
 
