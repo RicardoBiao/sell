@@ -30,7 +30,17 @@
             <i class="icon-keyboard_arrow_right"></i>
         </div>
         <div v-show="detailShow" class="detail">
-            <button @click="showDetail()" >close</button>
+            <div class="detail-warpper clearfix">
+                <div class="detail-main">
+                    <p>{{seller.bulletin}}</p>
+                    <p>{{seller.bulletin}}</p>
+                   
+                </div>
+            </div>
+            
+            <div class="detail-close" @click="showDetail()" >
+                <i class="icon-close"></i>
+            </div>
         </div>
 
     </div>
@@ -139,8 +149,11 @@
                 .count
                     font-size : 10px
                     align-self : center
+                    vertical-align : top
                 .icon-keyboard_arrow_right
                     font-size : 10px
+                    line-height : 24px
+                    margin-left : 2px 
 
         .bulletin-wrapper
             height : 28px
@@ -173,13 +186,32 @@
             left : 0px
             height : 100%
             width : 100%
-            background-color : rgba(0,0,0,0.5)
+            overflow : auto
+            background-color : rgba(7,17,27,0.8)
+            blur : 10px
             text-align : center
-            button 
-                position : absolute
-                bottom : 20px
-                margin : 0 auto
-                background-color : red
+
+            .detail-warpper
+                min-height : 100%
+                
+                
+                .detail-main
+                    margin-top : 64px
+                    padding-bottom : 64px
+            
+            .detail-close
+                position : relative
+                width : 32px
+                height : 32px
+                font-size : 32px
+                // color : rgba(255,255,255,0.5)
+                clear : both
+                margin : -64px auto 0 auto
+
+
+
+            
+
                 
              
 

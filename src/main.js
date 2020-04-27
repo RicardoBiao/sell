@@ -8,6 +8,8 @@ import goods from '../src/components/goods/goods';
 import seller from '../src/components/seller/seller';
 import axios from "axios";
 
+import './common/stylus/index.styl';
+
 
 
 Vue.prototype.$axios = axios;
