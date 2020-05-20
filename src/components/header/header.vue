@@ -31,8 +31,14 @@
         </div>
         <div v-show="detailShow" class="detail">
             <div class="detail-warpper clearfix">
+                
+                <ul class="supports" v-if="seller.supports" >
+                    <li class="support-item" v-for="item in seller.supports">
+                        <span class="icon" :class="classMap[item.type]"></span>
+                        <span class="text">{{item.description}}</span>
+                    </li>
+                </ul>
                 <div class="detail-main">
-                    <p>{{seller.bulletin}}</p>
                     <p>{{seller.bulletin}}</p>
                    
                 </div>
@@ -198,6 +204,30 @@
                 .detail-main
                     margin-top : 64px
                     padding-bottom : 64px
+                .support-item
+                    .icon
+                        // background-image : url(decrease_1 + "@2x.png")
+                        display : inline-block
+                        vertical-align : top
+                        width : 12px
+                        height : 12px
+                        margin-top : 1px
+                        margin-right : 4px
+                        background-size : 12px 12px
+                        background-repeat : no-repeat
+                        &.decrease
+                            bg-image('decrease_1')
+                        &.discount
+                            bg-image('discount_1')
+                        &.guarantee
+                            bg-image('guarantee_1')
+                        &.invoice
+                            bg-image('invoice_1')
+                        &.special
+                            bg-image('special_1')
+                    .text
+                        line-height : 12px
+                        font-size : 12px    
             
             .detail-close
                 position : relative
